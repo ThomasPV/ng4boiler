@@ -1,0 +1,40 @@
+@media only screen and (max-width: 980px) {
+  .fill{
+    background: none !important;
+    transition: all ease 1s;
+  }
+
+  h1{
+
+    position: relative !important;
+    top:100px !important;
+    left: 0px !important;
+    transition: all ease 0.5s !important;
+  }
+
+}
+.fill{
+  background: url('../../../assets/images/images.jpg') ;
+  background-size: cover;
+  background-attachment: fixed;
+  min-height: 100%;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  z-index: -1;
+  transition: all ease 0.5s !important;
+
+}
+
+
+h1{
+  color: #893733;
+  font-family: 'lobster', cursive;
+  font-size: 3.5em;
+  position: fixed;
+  top:100px;
+  left: 500px;
+
+}

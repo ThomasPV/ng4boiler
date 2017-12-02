@@ -1,0 +1,11 @@
+<div class="row">
+    <div class="col-xs-12">
+        <button class="btn btn-success" routerLink="new">New Recipie</button>
+    </div>
+</div>
+<br>
+<div class="row">
+
+       <app-recipie-item *ngFor ="let recipie of (recipieState | async).recipes; let i = index; " [index]=i  [recipieItem] = recipie ></app-recipie-item>
+
+</div>

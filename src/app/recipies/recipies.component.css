@@ -1,0 +1,12 @@
+#recipieBack{
+
+  background: url("../../assets/images/cut.jpg");
+  background-size: cover;
+  min-height: 100%;
+  min-width: 100%;
+  position: fixed;
+  top:0;
+  left: 0;
+  z-index: -1;
+
+}

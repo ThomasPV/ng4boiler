@@ -1,0 +1,53 @@
+<div style="background: #fff; margin:50px auto;">
+  <div class="row">
+      <div class="col-xs-12" style="padding:10px 5px 0px 5px;" >
+          <img style="padding: 0px 50px;" src="{{recipieDetailMain.imagePath}}" alt="{{recipieDetailMain.name}}" class="center-block img-responsive" style="max-height:350px;">
+      </div>
+
+  </div>
+  <div class="row">
+      <div class="col-xs-12">
+        <h1 style="text-align:center;">{{recipieDetailMain.name}}</h1>
+      </div>
+  </div>
+  <div class="row">
+      <div class="col-xs-12 text-center">
+          <p style="padding: 5px 0" >{{recipieDetailMain.description}}</p>
+      </div>
+  </div>
+  <div class="row text-right" style=" margin: 0 20px;" >
+      <div class="col-xs-12">
+          <div class="btn-group " appDropdown >
+              <button class="btn btn-primary dropdown-toggle ">Manage Recipie <span class="caret"></span></button>
+              <ul id="RecipieEditDropdown" class="dropdown-menu">
+                  <li><a style="cursor:pointer;" (click)="onAddToShoppingList()" >+Shoplist</a></li>
+                  <li><a [routerLink]="['edit']" > Edit Recipie </a></li>
+                  <li><a style="cursor: pointer;" (click)="onDeleteRecipie()">Delete Recipie</a></li>
+              </ul>
+          </div>
+      </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12" >
+        <div class="table-responsive" style="padding:0px 20px;">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Ingredient Name</th>
+                <th>Ingredient Amount</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr *ngFor="let ingredient of recipieDetailMain.ingredients; let i = index;">
+                <td>{{i + 1}}</td>
+                <td>{{ingredient.name}}</td>
+                <td>{{ingredient.amount}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+  </div>
+</div>
