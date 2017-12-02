@@ -16,27 +16,31 @@ import * as fromRecipie  from '../store/recipie.reducers';
 })
 export class RecipieDetailComponent implements OnInit {
 
-recipieDetailMain: Observable<Recipie>;
+recipieDetailMain: Observable<fromRecipie.State>;
+recipie: Recipie;
 id: number;
   constructor(private router:Router, private recipieService: RecipieService, private routes : ActivatedRoute , private store: Store<fromRecipie.FeatureState> ) { }
 
   ngOnInit() {
 
-    this.recipieDetailMain = this.recipieService.getRecipie(+this.routes.snapshot.params['id']);
+
 
     this.routes.params
       .subscribe((params: Params) => {
       this.id = +params['id'];
-
-      this.recipieDetailMain = this.recipieService.getRecipie(this.id);
-
+      this.recipieDetailMain = this.store.select('recipes');
       });
 
   }
 
  onAddToShoppingList(){
 
-     this.store.dispatch(new ShoppingListActions.AddIngredients(this.recipieDetailMain.ingredients));
+this.store.select('recipes')
+ .take(1)
+ .subscribe((recipes : fromRecipie.State)=>{
+    this.store.dispatch(new ShoppingListActions.AddIngredients(recipes.recipes[this.id].ingredients));
+ });
+
 
 
  }

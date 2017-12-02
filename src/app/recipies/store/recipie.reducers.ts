@@ -1,5 +1,6 @@
 import { Recipie } from '../recipie.model';
 import * as fromRecipieActions from './recipie.actions';
+import * as fromApp from '../../store/app.reducer';
 
 
 
@@ -8,7 +9,7 @@ export interface State {
 
 }
 
-export interface FeatureState {
+export interface FeatureState extends fromApp.AppState {
   recipes: State;
 }
 

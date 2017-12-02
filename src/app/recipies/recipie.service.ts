@@ -8,6 +8,7 @@ import 'rxjs/add/operator/map';
 import {AuthService} from "../auth/auth.service";
 import { Store } from '@ngrx/store';
 import * as fromRecipie from './store/recipie.reducers';
+import * as fromRecipieActions from './store/recipie.actions';
 
 @Injectable()
 export class RecipieService implements OnInit{
@@ -54,13 +55,14 @@ export class RecipieService implements OnInit{
           .subscribe((recipes) => {
 
           this.recipies = recipes;
-          this.recipiesChanged.next(this.recipies.slice());
+          this.store.dispatch(new fromRecipieActions.SetRecipes(this.recipies));
 
 
 
           });
 
         return this.recipies.slice();
+
 
     }
 

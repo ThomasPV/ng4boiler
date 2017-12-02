@@ -5,6 +5,7 @@ import {Subscription} from "rxjs/Subscription";
 import {AuthService} from "../../auth/auth.service";
 import { Store } from '@ngrx/store';
 import * as fromRecipie from '../store/recipie.reducers';
+import * as fromRecipieActions from '../store/recipie.actions';
 import { Observable } from 'rxjs/Observable';
 @Component({
   selector: 'app-recipie-list',
@@ -14,7 +15,7 @@ import { Observable } from 'rxjs/Observable';
 export class RecipieListComponent implements OnInit {
 
 
-
+  recipes: Recipie[];
   recipieState:Observable<fromRecipie.State>;
 
 
@@ -23,9 +24,8 @@ export class RecipieListComponent implements OnInit {
   ngOnInit() {
 
       this.recipieState = this.store.select('recipes');
-      this.recipieState.subscribe((recipes)=>{
-        console.log(recipes);
-      });
+      this.recipieService.getRecipies();
+
 
 
 

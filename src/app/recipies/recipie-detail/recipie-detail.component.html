@@ -1,18 +1,18 @@
 <div style="background: #fff; margin:50px auto;">
   <div class="row">
       <div class="col-xs-12" style="padding:10px 5px 0px 5px;" >
-          <img style="padding: 0px 50px;" src="{{recipieDetailMain.imagePath}}" alt="{{recipieDetailMain.name}}" class="center-block img-responsive" style="max-height:350px;">
+          <img style="padding: 0px 50px;" src="{{(recipieDetailMain | async).recipes[id].imagePath}}" alt="{{(recipieDetailMain | async).recipes[id].name}}" class="center-block img-responsive" style="max-height:350px;">
       </div>
 
   </div>
   <div class="row">
       <div class="col-xs-12">
-        <h1 style="text-align:center;">{{recipieDetailMain.name}}</h1>
+        <h1 style="text-align:center;">{{(recipieDetailMain | async).recipes[id].name}}</h1>
       </div>
   </div>
   <div class="row">
       <div class="col-xs-12 text-center">
-          <p style="padding: 5px 0" >{{recipieDetailMain.description}}</p>
+          <p style="padding: 5px 0" >{{(recipieDetailMain | async).recipes[id].description}}</p>
       </div>
   </div>
   <div class="row text-right" style=" margin: 0 20px;" >
@@ -40,7 +40,7 @@
             </thead>
 
             <tbody>
-              <tr *ngFor="let ingredient of recipieDetailMain.ingredients; let i = index;">
+              <tr *ngFor="let ingredient of (recipieDetailMain | async).recipes[id].ingredients; let i = index;">
                 <td>{{i + 1}}</td>
                 <td>{{ingredient.name}}</td>
                 <td>{{ingredient.amount}}</td>
